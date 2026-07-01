@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Route A.C.A. | 学ぶ道筋が、合格につながる。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A1322;
+    --navy:#0E1B33;
+    --navy-surface:#16284A;
+    --navy-surface-2:#1C3056;
+    --gold:#C9A24B;
+    --gold-bright:#E0BD6E;
+    --paper:#F7F5EF;
+    --paper-dim:#EDEAE0;
+    --slate:#8A93A6;
+    --slate-dark:#5B6478;
+    --line:rgba(201,162,75,0.28);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+    font-weight:400;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Shippori Mincho', serif;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ===== Route line (signature element) ===== */
+  .route-line{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(to bottom, transparent 0%, var(--line) 8%, var(--line) 92%, transparent 100%);
+    transform:translateX(-50%);
+    z-index:0;
+    pointer-events:none;
+  }
+  .route-dot{
+    position:absolute;
+    left:50%;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--gold);
+    transform:translate(-50%,-50%);
+    z-index:1;
+  }
+  @media (max-width:780px){
+    .route-line{display:none;}
+    .route-dot{display:none;}
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(14,27,51,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(201,162,75,0.2);
+  }
+  .header-inner{
+    max-width:1040px;
+    margin:0 auto;
+    padding:18px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    color:var(--paper);
+    font-family:'Shippori Mincho', serif;
+    font-size:1.05rem;
+    font-weight:700;
+    letter-spacing:0.04em;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .brand .dot{color:var(--gold);}
+  .brand .sub{
+    font-family:'Noto Sans JP', sans-serif;
+    font-size:0.62rem;
+    color:var(--slate);
+    font-weight:400;
+    letter-spacing:0.08em;
+  }
+  .header-cta{
+    background:var(--gold);
+    color:var(--ink);
+    font-size:0.82rem;
+    font-weight:700;
+    padding:9px 20px;
+    border-radius:2px;
+    letter-spacing:0.03em;
+    transition:background 0.2s ease, transform 0.2s ease;
+    white-space:nowrap;
+  }
+  .header-cta:hover{background:var(--gold-bright); transform:translateY(-1px);}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(201,162,75,0.13), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--navy) 55%, var(--navy-surface) 100%);
+    color:var(--paper);
+    padding:170px 28px 130px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,162,75,0.035) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,162,75,0.035) 40px);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.74rem;
+    letter-spacing:0.22em;
+    color:var(--gold-bright);
+    margin-bottom:34px;
+    font-weight:500;
+  }
+  .hero-eyebrow::before,.hero-eyebrow::after{
+    content:"";
+    width:24px; height:1px;
+    background:var(--gold);
+  }
+  .hero h1{
+    position:relative;
+    font-size:clamp(2.1rem, 5.4vw, 3.6rem);
+    font-weight:700;
+    line-height:1.55;
+    letter-spacing:0.02em;
+    margin-bottom:30px;
+  }
+  .hero h1 .accent{
+    color:var(--gold-bright);
+  }
+  .hero p.lead{
+    position:relative;
+    max-width:600px;
+    margin:0 auto 48px;
+    color:var(--slate);
+    font-size:1rem;
+    line-height:2.1;
+  }
+  .hero-actions{
+    position:relative;
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--ink);
+    font-weight:700;
+    font-size:0.95rem;
+    padding:17px 38px;
+    border-radius:2px;
+    letter-spacing:0.03em;
+    box-shadow:0 8px 30px rgba(201,162,75,0.25);
+    transition:all 0.25s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .btn-primary:hover{
+    background:var(--gold-bright);
+    transform:translateY(-2px);
+    box-shadow:0 12px 36px rgba(201,162,75,0.35);
+  }
+  .btn-primary .arrow{transition:transform 0.25s ease;}
+  .btn-primary:hover .arrow{transform:translateX(4px);}
+
+  .btn-ghost{
+    border:1px solid rgba(247,245,239,0.25);
+    color:var(--paper);
+    font-size:0.95rem;
+    font-weight:500;
+    padding:17px 32px;
+    border-radius:2px;
+    transition:all 0.25s ease;
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-bright);}
+
+  /* ===== Section generic ===== */
+  section{
+    position:relative;
+    padding:108px 0;
+  }
+  .section-light{background:var(--paper);}
+  .section-dim{background:var(--paper-dim);}
+  .section-dark{background:linear-gradient(180deg, var(--navy-surface), var(--navy));}
+
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.2em;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:18px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(1.5rem, 3vw, 2.1rem);
+    font-weight:700;
+    line-height:1.6;
+    margin-bottom:24px;
+  }
+  .section-title.center{text-align:center;}
+  .section-lead{
+    color:var(--slate-dark);
+    font-size:0.97rem;
+    max-width:620px;
+    line-height:2;
+  }
+  .section-lead.center{margin:0 auto; text-align:center;}
+
+  /* ===== Concept ===== */
+  .concept-block{
+    text-align:center;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .concept-phrase{
+    font-size:clamp(1.5rem, 3.6vw, 2.3rem);
+    font-weight:800;
+    color:var(--navy);
+    line-height:1.9;
+    margin:34px 0;
+    position:relative;
+    display:inline-block;
+  }
+  .concept-phrase::before{
+    content:"";
+    display:block;
+    width:1px;
+    height:48px;
+    background:var(--gold);
+    margin:0 auto 28px;
+  }
+  .concept-body{
+    color:var(--slate-dark);
+    font-size:0.97rem;
+    line-height:2.1;
+    text-align:left;
+    margin-top:40px;
+  }
+  .concept-body p{margin-bottom:1.4em;}
+
+  /* ===== Members (signature: certificate ledger) ===== */
+  .ledger{
+    max-width:760px;
+    margin:60px auto 0;
+    border-top:1px solid rgba(201,162,75,0.35);
+  }
+  .ledger-item{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:24px 8px;
+    border-bottom:1px solid rgba(201,162,75,0.2);
+    transition:background 0.2s ease;
+  }
+  .ledger-item:hover{background:rgba(201,162,75,0.05);}
+  .ledger-seal{
+    flex-shrink:0;
+    width:52px;height:52px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Shippori Mincho', serif;
+    font-size:0.78rem;
+    font-weight:700;
+    color:var(--gold);
+    letter-spacing:0.02em;
+    position:relative;
+  }
+  .ledger-seal::after{
+    content:"";
+    position:absolute;
+    inset:5px;
+    border:1px solid rgba(201,162,75,0.4);
+    border-radius:50%;
+  }
+  .ledger-text{flex:1;}
+  .ledger-name{
+    font-family:'Shippori Mincho', serif;
+    font-size:1.06rem;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:3px;
+  }
+  .ledger-tag{
+    font-size:0.78rem;
+    color:var(--slate);
+    letter-spacing:0.03em;
+  }
+
+  /* ===== Mission cards (3 viewpoints) ===== */
+  .viewpoints{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:rgba(201,162,75,0.25);
+    margin-top:56px;
+    border:1px solid rgba(201,162,75,0.25);
+  }
+  .viewpoint{
+    background:var(--paper);
+    padding:42px 32px;
+  }
+  .viewpoint-kanji{
+    font-family:'Shippori Mincho', serif;
+    font-size:0.85rem;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:0.1em;
+    margin-bottom:18px;
+    display:block;
+  }
+  .viewpoint h3{
+    font-size:1.08rem;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:14px;
+    line-height:1.6;
+  }
+  .viewpoint p{
+    font-size:0.88rem;
+    color:var(--slate-dark);
+    line-height:1.95;
+  }
+  @media (max-width:780px){
+    .viewpoints{grid-template-columns:1fr;}
+  }
+
+  /* ===== Questions (透明性) ===== */
+  .questions{
+    max-width:680px;
+    margin:56px auto 0;
+  }
+  .question-row{
+    display:flex;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid rgba(201,162,75,0.18);
+  }
+  .question-mark{
+    font-family:'Shippori Mincho', serif;
+    font-size:1.3rem;
+    color:var(--gold);
+    font-weight:700;
+    flex-shrink:0;
+    line-height:1.6;
+  }
+  .question-text{
+    font-size:0.95rem;
+    color:var(--ink);
+    font-weight:500;
+    line-height:1.95;
+  }
+
+  /* ===== note CTA banner (dark, gold focal) ===== */
+  .note-cta{
+    position:relative;
+    background:linear-gradient(135deg, var(--ink) 0%, var(--navy) 60%, var(--navy-surface-2) 100%);
+    color:var(--paper);
+    padding:100px 28px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .note-cta::before{
+    content:"";
+    position:absolute;
+    top:-40%; left:50%;
+    width:700px;height:700px;
+    background:radial-gradient(circle, rgba(201,162,75,0.18), transparent 65%);
+    transform:translateX(-50%);
+    pointer-events:none;
+  }
+  .note-cta-eyebrow{
+    position:relative;
+    font-size:0.74rem;
+    letter-spacing:0.22em;
+    color:var(--gold-bright);
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .note-cta h2{
+    position:relative;
+    font-size:clamp(1.5rem, 3.4vw, 2.2rem);
+    font-weight:700;
+    line-height:1.7;
+    margin-bottom:20px;
+  }
+  .note-cta p{
+    position:relative;
+    color:var(--slate);
+    max-width:560px;
+    margin:0 auto 44px;
+    font-size:0.95rem;
+    line-height:2;
+  }
+  .note-cta .btn-primary{
+    position:relative;
+    font-size:1.02rem;
+    padding:20px 48px;
+  }
+  .note-mini{
+    position:relative;
+    margin-top:28px;
+    font-size:0.82rem;
+    color:var(--slate);
+  }
+  .note-mini a{
+    color:var(--gold-bright);
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  /* ===== Content lineup ===== */
+  .lineup{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin-top:56px;
+  }
+  .lineup-row{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:32px;
+    padding:30px 0;
+    border-bottom:1px solid rgba(201,162,75,0.2);
+    align-items:start;
+  }
+  .lineup-tag{
+    font-family:'Shippori Mincho', serif;
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    padding:6px 0;
+    text-align:center;
+    border-radius:2px;
+    height:fit-content;
+  }
+  .lineup-content h3{
+    font-size:1.02rem;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:8px;
+  }
+  .lineup-content p{
+    font-size:0.88rem;
+    color:var(--slate-dark);
+    line-height:1.9;
+  }
+  @media (max-width:600px){
+    .lineup-row{grid-template-columns:1fr;}
+    .lineup-tag{width:fit-content; padding:4px 14px;}
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--ink);
+    color:var(--slate);
+    padding:56px 28px 36px;
+    text-align:center;
+  }
+  .footer-brand{
+    font-family:'Shippori Mincho', serif;
+    color:var(--paper);
+    font-size:1.1rem;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .footer-tagline{
+    font-size:0.85rem;
+    color:var(--gold-bright);
+    margin-bottom:30px;
+    letter-spacing:0.04em;
+  }
+  .footer-credit{
+    font-size:0.74rem;
+    color:var(--slate-dark);
+    line-height:2;
+    margin-bottom:30px;
+  }
+  .footer-bottom{
+    font-size:0.72rem;
+    color:var(--slate-dark);
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:24px;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media (max-width:780px){
+    section{padding:76px 0;}
+    .hero{padding:140px 24px 90px;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">Study Route <span class="dot">A.C.A.</span><span class="sub">学習支援チーム</span></div>
+    <a class="header-cta" href="https://note.com/made_in_jp" target="_blank" rel="noopener">noteを見る</a>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="hero-eyebrow">STUDY ROUTE A.C.A.</span>
+  <h1>学ぶ道筋が、<span class="accent">合格</span>につながる。</h1>
+  <p class="lead">
+    さまざまな難関試験の合格者・指導経験者が集まり、受験生・資格試験受験者の学習を支援する学習支援チームです。<br>
+    航空大学校対策をはじめ、実戦的な演習問題・模擬試験・解答解説を発信しています。
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="https://note.com/made_in_jp" target="_blank" rel="noopener">noteで教材を見る <span class="arrow">→</span></a>
+    <a class="btn-ghost" href="#members">チームを見る</a>
+  </div>
+</section>
+
+<section class="section-light" id="concept" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:0;"></div>
+  <div class="wrap">
+    <div class="concept-block reveal">
+      <span class="eyebrow">CONCEPT</span>
+      <p class="concept-phrase">学ぶ道筋が、合格につながる。</p>
+      <div class="concept-body">
+        <p>Study Route A.C.A. は、さまざまな難関試験の合格者や指導経験者が集まり、受験生・資格試験受験者の学習をサポートするために立ち上げた学習支援チームです。</p>
+        <p>それぞれが実際に勉強し、試験を経験してきた立場から、「どのように勉強すれば合格に近づけるのか」「直前期に何を優先すべきか」「受験生がつまずきやすいポイントはどこか」を考えながら、教材や学習情報を作成しています。</p>
+        <p>単に問題を並べるだけではなく、合格者の視点・指導者の視点・受験経験者の視点を取り入れながら、受験生が安心して使える教材づくりを目指しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dim" id="members" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">MEMBERS</span>
+      <h2 class="section-title">チームを構成する合格者たち</h2>
+      <p class="section-lead">
+        幅広い分野で試験を突破してきたメンバーが関わっています。実際の合格体験にもとづいて教材を作成しています。
+      </p>
+    </div>
+
+    <div class="ledger reveal">
+      <div class="ledger-item">
+        <div class="ledger-seal">会計士</div>
+        <div class="ledger-text">
+          <div class="ledger-name">公認会計士試験 合格者</div>
+          <div class="ledger-tag">最難関国家資格突破の学習戦略</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">京大</div>
+        <div class="ledger-text">
+          <div class="ledger-name">京都大学ロースクール 合格者</div>
+          <div class="ledger-tag">法律系大学院入試の対策経験</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">一橋</div>
+        <div class="ledger-text">
+          <div class="ledger-name">一橋大学大学院 合格者</div>
+          <div class="ledger-tag">大学院入試対策の実績</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">航大</div>
+        <div class="ledger-text">
+          <div class="ledger-name">航空大学校 合格者</div>
+          <div class="ledger-tag">専門科目・適性試験を含む最終合格経験</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">FP</div>
+        <div class="ledger-text">
+          <div class="ledger-name">ファイナンシャルプランナー試験 合格者</div>
+          <div class="ledger-tag">金融・資産設計分野の資格保有</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">簿記</div>
+        <div class="ledger-text">
+          <div class="ledger-name">簿記試験 合格者</div>
+          <div class="ledger-tag">会計分野の基礎資格保有</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">宅建</div>
+        <div class="ledger-text">
+          <div class="ledger-name">宅地建物取引士試験 合格者</div>
+          <div class="ledger-tag">不動産関連国家資格保有</div>
+        </div>
+      </div>
+      <div class="ledger-item">
+        <div class="ledger-seal">指導</div>
+        <div class="ledger-text">
+          <div class="ledger-name">元塾講師・指導経験者</div>
+          <div class="ledger-tag">受験指導の現場経験を教材設計に反映</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-light" id="approach" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">APPROACH</span>
+      <h2 class="section-title center">3つの視点で教材をつくる</h2>
+      <p class="section-lead center">合格者・指導者・受験経験者、それぞれの立場からの視点を組み合わせています。</p>
+    </div>
+
+    <div class="viewpoints reveal">
+      <div class="viewpoint">
+        <span class="viewpoint-kanji">合格者の視点</span>
+        <h3>何が合否を分けたか</h3>
+        <p>実際に試験を突破した経験から、得点に直結する優先順位と、本番で効果のあった戦略を共有します。</p>
+      </div>
+      <div class="viewpoint">
+        <span class="viewpoint-kanji">指導者の視点</span>
+        <h3>つまずきやすい点はどこか</h3>
+        <p>指導経験を通して見えてきた、受験生が間違えやすいポイントや理解が止まりやすい箇所を教材に反映します。</p>
+      </div>
+      <div class="viewpoint">
+        <span class="viewpoint-kanji">受験経験者の視点</span>
+        <h3>直前期に何をすべきか</h3>
+        <p>本番までの限られた時間で、何を優先し何を後回しにするべきか、実体験にもとづいた判断基準を伝えます。</p>
+      </div>
+    </div>
+
+    <div class="questions reveal">
+      <div class="question-row">
+        <div class="question-mark">Q</div>
+        <div class="question-text">どのように勉強すれば合格に近づけるのか</div>
+      </div>
+      <div class="question-row">
+        <div class="question-mark">Q</div>
+        <div class="question-text">直前期に何を優先すべきか</div>
+      </div>
+      <div class="question-row">
+        <div class="question-mark">Q</div>
+        <div class="question-text">受験生がつまずきやすいポイントはどこか</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dim" id="content" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">CONTENT</span>
+      <h2 class="section-title">noteで発信していく教材</h2>
+      <p class="section-lead">航空大学校対策をはじめ、今後もさまざまな資格試験・入試に向けた学習コンテンツを順次公開していきます。</p>
+    </div>
+
+    <div class="lineup reveal">
+      <div class="lineup-row">
+        <div class="lineup-tag">勉強法</div>
+        <div class="lineup-content">
+          <h3>試験別の学習戦略</h3>
+          <p>各試験の出題傾向にあわせた学習の進め方や、時期ごとの優先順位の付け方を解説します。</p>
+        </div>
+      </div>
+      <div class="lineup-row">
+        <div class="lineup-tag">演習問題</div>
+        <div class="lineup-content">
+          <h3>実戦形式の演習教材</h3>
+          <p>本番形式に近い演習問題を作成し、知識の定着と解答プロセスの習熟を支援します。</p>
+        </div>
+      </div>
+      <div class="lineup-row">
+        <div class="lineup-tag">模擬試験</div>
+        <div class="lineup-content">
+          <h3>本番形式の模試</h3>
+          <p>時間配分や問題の難易度感を体感できる模擬試験を作成し、定期的に公開していきます。</p>
+        </div>
+      </div>
+      <div class="lineup-row">
+        <div class="lineup-tag">解答解説</div>
+        <div class="lineup-content">
+          <h3>過去問・演習の解答解説</h3>
+          <p>単に答えを示すだけでなく、なぜその答えになるのか、解答に至る考え方までを丁寧に解説します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="note-cta">
+  <span class="note-cta-eyebrow">NOTE CHANNEL</span>
+  <h2>Study Route A.C.A.</h2>
+  <p>
+    航空大学校をはじめ、さまざまな資格試験・入試に向けた勉強法や演習教材を発信しています。
+    航空大学校受験経験者、最終合格者、指導経験のあるメンバーが集まり、実戦的で使いやすい教材づくりを行っています。
+  </p>
+  <a class="btn-primary" href="https://note.com/made_in_jp" target="_blank" rel="noopener">noteのチャンネルを見る <span class="arrow">→</span></a>
+  <div class="note-mini">様々な教材を順次公開中。 <a href="https://note.com/made_in_jp" target="_blank" rel="noopener">note.com/made_in_jp</a></div>
+</section>
+
+<footer>
+  <div class="footer-brand">Study Route A.C.A.</div>
+  <div class="footer-tagline">学ぶ道筋が、合格につながる。</div>
+  <div class="footer-credit">
+    Study Route A.C.A 作成チーフ<br>
+    模試作成チーム一同 ／ 教材作成チーム一同 ／ スタッフ一同
+  </div>
+  <div class="footer-bottom">&copy; Study Route A.C.A. All Rights Reserved.</div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
