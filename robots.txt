@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studyroute-aca.netlify.app/sitemap.xml
+Sitemap: https://studyroute-aca.github.io/supp/sitemap.xml
