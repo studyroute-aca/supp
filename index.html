@@ -397,6 +397,113 @@
     line-height:1.95;
   }
 
+  /* ===== Sample preview ===== */
+  .sample-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+    margin-top:56px;
+  }
+  .sample-card{
+    background:var(--paper);
+    border:1px solid rgba(201,162,75,0.3);
+  }
+  .sample-frame{
+    position:relative;
+    overflow:hidden;
+    cursor:zoom-in;
+    background:#fff;
+  }
+  .sample-frame img{
+    width:100%;
+    display:block;
+    transition:transform 0.4s ease;
+  }
+  .sample-frame:hover img{transform:scale(1.03);}
+  .sample-watermark{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+  }
+  .sample-watermark span{
+    font-family:'Shippori Mincho', serif;
+    font-size:1.6rem;
+    font-weight:700;
+    color:rgba(14,27,51,0.16);
+    transform:rotate(-28deg);
+    letter-spacing:0.15em;
+    white-space:nowrap;
+    text-shadow:0 0 1px rgba(14,27,51,0.06);
+  }
+  .sample-zoom-hint{
+    position:absolute;
+    bottom:14px;
+    right:14px;
+    background:rgba(14,27,51,0.82);
+    color:var(--paper);
+    font-size:0.7rem;
+    padding:6px 12px;
+    border-radius:2px;
+    letter-spacing:0.04em;
+  }
+  .sample-caption{
+    padding:18px 20px;
+    border-top:1px solid rgba(201,162,75,0.25);
+  }
+  .sample-caption .label{
+    font-family:'Shippori Mincho', serif;
+    font-size:0.92rem;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .sample-caption .desc{
+    font-size:0.8rem;
+    color:var(--slate);
+  }
+  .sample-note{
+    margin-top:24px;
+    font-size:0.78rem;
+    color:var(--slate);
+    text-align:center;
+  }
+  @media (max-width:780px){
+    .sample-grid{grid-template-columns:1fr;}
+  }
+
+  /* lightbox */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(10,19,34,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    z-index:1000;
+    cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:min(900px, 100%);
+    max-height:90vh;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .lightbox-close{
+    position:absolute;
+    top:24px; right:32px;
+    color:var(--paper);
+    font-size:1.6rem;
+    font-weight:300;
+    background:none;
+    border:none;
+    cursor:pointer;
+    line-height:1;
+  }
+
   /* ===== note CTA banner (dark, gold focal) ===== */
   .note-cta{
     position:relative;
@@ -547,6 +654,9 @@
   }
 
   @media (max-width:780px){
+    .nav-sample-link{display:none;}
+  }
+  @media (max-width:780px){
     section{padding:76px 0;}
     .hero{padding:140px 24px 90px;}
   }
@@ -562,7 +672,10 @@
 <header>
   <div class="header-inner">
     <div class="brand">Study Route <span class="dot">A.C.A.</span><span class="sub">学習支援チーム</span></div>
-    <a class="header-cta" href="https://note.com/made_in_jp" target="_blank" rel="noopener">noteを見る</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <a href="#sample" style="color:var(--paper); font-size:0.85rem; font-weight:500; opacity:0.85;" class="nav-sample-link">サンプルを見る</a>
+      <a class="header-cta" href="https://note.com/made_in_jp" target="_blank" rel="noopener">noteを見る</a>
+    </div>
   </div>
 </header>
 
@@ -756,6 +869,51 @@
   </div>
 </section>
 
+<section class="section-light" id="sample" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">SAMPLE</span>
+      <h2 class="section-title center">教材サンプルを見る</h2>
+      <p class="section-lead center">実際に作成している模擬試験の一部です。雰囲気や問題のレベル感の参考にしてください。</p>
+    </div>
+
+    <div class="sample-grid reveal">
+      <div class="sample-card">
+        <div class="sample-frame" onclick="openLightbox('images/sample-cover.png')">
+          <img src="images/sample-cover.png" alt="航空大学校模擬試験 表紙サンプル" loading="lazy">
+          <div class="sample-watermark"><span>SAMPLE ／ 無断転載禁止</span></div>
+          <div class="sample-zoom-hint">クリックで拡大</div>
+        </div>
+        <div class="sample-caption">
+          <div class="label">模擬試験 表紙（有料版）</div>
+          <div class="desc">総合 Part II 模擬試験 ／ 新出題範囲対応</div>
+        </div>
+      </div>
+
+      <div class="sample-card">
+        <div class="sample-frame" onclick="openLightbox('images/sample-question.png')">
+          <img src="images/sample-question.png" alt="航空大学校模擬試験 問題例サンプル" loading="lazy">
+          <div class="sample-watermark"><span>SAMPLE ／ 無断転載禁止</span></div>
+          <div class="sample-zoom-hint">クリックで拡大</div>
+        </div>
+        <div class="sample-caption">
+          <div class="label">問題例（地学・気象分野）</div>
+          <div class="desc">図表付きの設問形式・解答選択肢のサンプル</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="sample-note">掲載内容の無断転載・複製・再配布を禁止します。全問・解答解説はnoteにて公開しています。</p>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="閉じる">&times;</button>
+  <img id="lightbox-img" src="" alt="拡大表示">
+</div>
+
 <section class="note-cta">
   <span class="note-cta-eyebrow">NOTE CHANNEL</span>
   <h2>Study Route A.C.A.</h2>
@@ -778,6 +936,16 @@
 </footer>
 
 <script>
+  function openLightbox(src){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(e){
+    if(e) e.stopPropagation();
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightbox-img').src = '';
+  }
+
   const els = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
