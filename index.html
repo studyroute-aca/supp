@@ -366,10 +366,19 @@
     font-weight:700;
     line-height:1.55;
     letter-spacing:0.02em;
-    margin-bottom:30px;
+    margin-bottom:14px;
   }
   .hero h1 .accent{
     color:var(--gold-bright);
+  }
+  .hero-subcopy{
+    position:relative;
+    font-family:'Shippori Mincho', serif;
+    font-size:clamp(0.95rem, 2vw, 1.2rem);
+    font-weight:600;
+    color:var(--gold-bright);
+    letter-spacing:0.06em;
+    margin-bottom:28px;
   }
   .hero p.lead{
     position:relative;
@@ -599,6 +608,107 @@
   .members-title{
     font-size:clamp(1.7rem, 3.6vw, 2.4rem) !important;
     line-height:1.7 !important;
+  }
+
+  /* ===== Primary member cards ===== */
+  .members-primary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin:52px auto 0;
+    max-width:920px;
+  }
+  .member-card{
+    background:var(--paper-dim);
+    border:1px solid rgba(201,162,75,0.3);
+    padding:36px 28px;
+    text-align:center;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .member-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 40px rgba(10,19,34,0.1);
+  }
+  .member-card-seal{
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 20px;
+    font-family:'Shippori Mincho', serif;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--gold);
+    position:relative;
+    transition:transform 0.3s ease;
+  }
+  .member-card:hover .member-card-seal{transform:rotate(8deg) scale(1.08);}
+  .member-card-seal::after{
+    content:"";
+    position:absolute;
+    inset:6px;
+    border:1px solid rgba(201,162,75,0.4);
+    border-radius:50%;
+  }
+  .member-card-name{
+    font-family:'Shippori Mincho', serif;
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--navy);
+    margin-bottom:10px;
+    line-height:1.6;
+  }
+  .member-card-desc{
+    font-size:0.82rem;
+    color:var(--slate-dark);
+    line-height:1.85;
+  }
+  .member-card-badge{
+    display:inline-block;
+    background:var(--navy);
+    color:var(--paper);
+    font-size:0.68rem;
+    font-weight:700;
+    padding:4px 12px;
+    border-radius:2px;
+    letter-spacing:0.04em;
+    margin-bottom:14px;
+  }
+  @media (max-width:780px){
+    .members-primary{grid-template-columns:1fr;}
+  }
+
+  /* ===== Sub members ===== */
+  .members-sub{
+    max-width:920px;
+    margin:36px auto 0;
+    padding-top:28px;
+    border-top:1px solid rgba(201,162,75,0.2);
+  }
+  .members-sub-label{
+    font-size:0.72rem;
+    font-weight:700;
+    color:var(--slate);
+    letter-spacing:0.1em;
+    margin-bottom:14px;
+    text-align:center;
+  }
+  .members-sub-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+  }
+  .members-sub-tag{
+    font-size:0.78rem;
+    color:var(--slate-dark);
+    border:1px solid rgba(201,162,75,0.3);
+    padding:6px 16px;
+    border-radius:20px;
+    font-weight:500;
   }
 
   /* ===== FAQ ===== */
@@ -1425,9 +1535,10 @@
   <img src="images/logo.png" alt="" class="hero-logo-float" aria-hidden="true">
   <span class="hero-eyebrow">STUDY ROUTE A.C.A.</span>
   <h1>学ぶ道筋が、<span class="accent">合格</span>につながる。</h1>
+  <p class="hero-subcopy">航空大学校受験から始める、合格までの学習ルート。</p>
   <p class="lead">
-    さまざまな難関試験の合格者・指導経験者が集まり、受験生・資格試験受験者の学習を支援する学習支援チームです。<br>
-    航空大学校対策をはじめ、過去問にもとづいた演習問題・模擬試験・解答解説を発信しています。
+    航空大学校最終合格者・受験経験者・元大手塾講師が集まり、受験生の学習を支援する学習支援チームです。<br>
+    過去問分析にもとづいた演習問題・模擬試験・解答解説をnoteで発信しています。
   </p>
   <div class="hero-actions">
     <a class="btn-primary" href="https://note.com/made_in_jp" target="_blank" rel="noopener">noteで教材を見る <span class="arrow">→</span></a>
@@ -1563,8 +1674,8 @@
       <span class="eyebrow">CONCEPT</span>
       <p class="concept-phrase">学ぶ道筋が、合格につながる。</p>
       <div class="concept-body">
-        <p>Study Route A.C.A. は、さまざまな難関試験の合格者や指導経験者が集まり、受験生・資格試験受験者の学習をサポートするために立ち上げた学習支援チームです。</p>
-        <p>それぞれが実際に勉強し、試験を経験してきた立場から、「どのように勉強すれば合格に近づけるのか」「直前期に何を優先すべきか」「受験生がつまずきやすいポイントはどこか」を考えながら、教材や学習情報を作成しています。</p>
+        <p>Study Route A.C.A. は、航空大学校対策を主軸に、受験生の学習をサポートするために立ち上げた学習支援チームです。航空大学校最終合格者・受験経験者・元大手塾講師が中心となり、実際の試験を経験してきた立場から教材を作成しています。</p>
+        <p>「どのように勉強すれば合格に近づけるのか」「直前期に何を優先すべきか」「受験生がつまずきやすいポイントはどこか」——これらの問いに正面から向き合いながら、教材と学習情報を作り続けています。</p>
         <p>単に問題を並べるだけではなく、合格者の視点・指導者の視点・受験経験者の視点を取り入れながら、受験生が安心して使える教材づくりを目指しています。</p>
       </div>
     </div>
@@ -1608,54 +1719,40 @@
   <div class="wrap">
     <div class="reveal" style="text-align:center;">
       <span class="eyebrow">MEMBERS</span>
-      <h2 class="section-title center members-title">幅広い分野を突破してきた<br>合格者・指導経験者が集結</h2>
+      <h2 class="section-title center members-title">航空大学校のプロが<br>教材をつくる</h2>
       <p class="section-lead center">
-        それぞれが実際に試験を経験してきた立場から、合格に近づくための学習戦略を教材に落とし込んでいます。
+        最終合格者・受験経験者・元大手塾講師が中核を担い、実体験にもとづいた教材設計を行っています。
       </p>
     </div>
 
-    <div class="ledger reveal">
-      <div class="ledger-item">
-        <div class="ledger-seal">京大</div>
-        <div class="ledger-text">
-          <div class="ledger-name">京都大学ロースクール 合格者</div>
-          <div class="ledger-tag">法律系大学院入試の対策経験</div>
-        </div>
+    <div class="members-primary reveal">
+      <div class="member-card">
+        <div class="member-card-seal">航大</div>
+        <span class="member-card-badge">最終合格</span>
+        <div class="member-card-name">航空大学校<br>最終合格者</div>
+        <div class="member-card-desc">第一次試験から最終試験まで突破した経験から、合否を分けるポイントと本番で効果のあった戦略を教材に落とし込んでいます。</div>
       </div>
-      <div class="ledger-item">
-        <div class="ledger-seal">一橋</div>
-        <div class="ledger-text">
-          <div class="ledger-name">一橋大学大学院 合格者</div>
-          <div class="ledger-tag">大学院入試対策の実績</div>
-        </div>
+      <div class="member-card">
+        <div class="member-card-seal">受験</div>
+        <span class="member-card-badge">受験経験</span>
+        <div class="member-card-name">航空大学校<br>受験経験者</div>
+        <div class="member-card-desc">実際に受験した立場から、受験生がつまずきやすいポイントや、直前期に本当に必要な対策を教材に反映しています。</div>
       </div>
-      <div class="ledger-item">
-        <div class="ledger-seal">航大</div>
-        <div class="ledger-text">
-          <div class="ledger-name">航空大学校 合格者</div>
-          <div class="ledger-tag">専門科目・適性試験を含む最終合格経験</div>
-        </div>
+      <div class="member-card">
+        <div class="member-card-seal">塾</div>
+        <span class="member-card-badge">指導経験</span>
+        <div class="member-card-name">元大手塾講師<br>指導経験者</div>
+        <div class="member-card-desc">受験指導の現場で培った「伝わる教え方」と「つまずきの見抜き方」を、教材の構成と解説に活かしています。</div>
       </div>
-      <div class="ledger-item">
-        <div class="ledger-seal">簿記</div>
-        <div class="ledger-text">
-          <div class="ledger-name">簿記検定2級 合格者</div>
-          <div class="ledger-tag">会計分野の基礎資格保有</div>
-        </div>
-      </div>
-      <div class="ledger-item">
-        <div class="ledger-seal">宅建</div>
-        <div class="ledger-text">
-          <div class="ledger-name">宅地建物取引士試験 合格者</div>
-          <div class="ledger-tag">不動産関連国家資格保有</div>
-        </div>
-      </div>
-      <div class="ledger-item">
-        <div class="ledger-seal">指導</div>
-        <div class="ledger-text">
-          <div class="ledger-name">元塾講師・指導経験者</div>
-          <div class="ledger-tag">受験指導の現場経験を教材設計に反映</div>
-        </div>
+    </div>
+
+    <div class="members-sub reveal">
+      <div class="members-sub-label">その他のメンバー</div>
+      <div class="members-sub-tags">
+        <span class="members-sub-tag">京都大学ロースクール 合格者</span>
+        <span class="members-sub-tag">一橋大学大学院 合格者</span>
+        <span class="members-sub-tag">簿記検定2級 合格者</span>
+        <span class="members-sub-tag">宅地建物取引士 合格者</span>
       </div>
     </div>
   </div>
