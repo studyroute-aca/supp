@@ -1,0 +1,68 @@
+name: Add News Item
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: '日付 (例: 2026.07.05)'
+        required: true
+      tag:
+        description: 'タグ種別 (material または site)'
+        required: true
+        default: 'material'
+      title:
+        description: '見出し'
+        required: true
+      url:
+        description: 'リンク先URL（任意、noteの記事URLなど）'
+        required: false
+      description:
+        description: '本文（説明文）'
+        required: true
+
+  repository_dispatch:
+    types: [add_news]
+
+permissions:
+  contents: write
+
+jobs:
+  add-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set variables
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            echo "date=${{ github.event.client_payload.date }}" >> "$GITHUB_OUTPUT"
+            echo "tag=${{ github.event.client_payload.tag }}" >> "$GITHUB_OUTPUT"
+            echo "title=${{ github.event.client_payload.title }}" >> "$GITHUB_OUTPUT"
+            echo "url=${{ github.event.client_payload.url }}" >> "$GITHUB_OUTPUT"
+            echo "description=${{ github.event.client_payload.description }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=${{ github.event.inputs.date }}" >> "$GITHUB_OUTPUT"
+            echo "tag=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+            echo "title=${{ github.event.inputs.title }}" >> "$GITHUB_OUTPUT"
+            echo "url=${{ github.event.inputs.url }}" >> "$GITHUB_OUTPUT"
+            echo "description=${{ github.event.inputs.description }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Insert news item
+        env:
+          NEWS_DATE: ${{ steps.vars.outputs.date }}
+          NEWS_TAG: ${{ steps.vars.outputs.tag }}
+          NEWS_TITLE: ${{ steps.vars.outputs.title }}
+          NEWS_URL: ${{ steps.vars.outputs.url }}
+          NEWS_DESC: ${{ steps.vars.outputs.description }}
+        run: python3 scripts/add_news.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "study-route-bot"
+          git config user.email "bot@studyroute-aca.local"
+          git add index.html
+          git commit -m "お知らせ追加: ${{ steps.vars.outputs.title }}" || echo "No changes to commit"
+          git push
