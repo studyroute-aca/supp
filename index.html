@@ -1497,6 +1497,90 @@
     outline:2px solid var(--gold);
     outline-offset:3px;
   }
+
+  /* ===== One Step banner (special announcement) ===== */
+  .onestep-banner{
+    position:relative;
+    background:linear-gradient(180deg, #FCFAF2 0%, #F1E8CC 100%);
+    border-top:1px solid rgba(201,162,75,0.4);
+    border-bottom:1px solid rgba(201,162,75,0.4);
+    padding:56px 28px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .onestep-inner{
+    position:relative;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .onestep-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ink);
+    color:var(--gold-bright);
+    font-size:0.8rem;
+    font-weight:700;
+    padding:8px 20px;
+    border-radius:20px;
+    letter-spacing:0.02em;
+    margin-bottom:26px;
+  }
+  .onestep-title{
+    font-family:'Shippori Mincho', serif;
+    font-size:clamp(1.3rem, 3.2vw, 1.7rem);
+    font-weight:700;
+    color:var(--navy);
+    line-height:1.75;
+    margin-bottom:30px;
+  }
+  .onestep-title-sub{
+    display:block;
+    font-size:0.58em;
+    font-weight:600;
+    color:var(--slate-dark);
+    margin-top:6px;
+    letter-spacing:0.02em;
+  }
+  .onestep-info{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:13px;
+    margin-bottom:36px;
+    font-size:1rem;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .onestep-deadline{
+    color:var(--navy);
+    font-weight:700;
+  }
+  .onestep-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--navy);
+    color:var(--gold-bright);
+    font-weight:700;
+    font-size:1.02rem;
+    padding:19px 46px;
+    border-radius:2px;
+    letter-spacing:0.03em;
+    box-shadow:0 10px 28px rgba(14,27,51,0.18);
+    transition:all 0.25s ease;
+  }
+  .onestep-cta:hover{
+    background:var(--ink);
+    transform:translateY(-2px);
+    box-shadow:0 14px 34px rgba(14,27,51,0.24);
+  }
+  .onestep-cta .arrow{transition:transform 0.25s ease;}
+  .onestep-cta:hover .arrow{transform:translateX(4px);}
+  @media (max-width:600px){
+    .onestep-banner{padding:44px 20px;}
+    .onestep-cta{width:100%; justify-content:center;}
+  }
 </style>
 </head>
 <body>
@@ -1554,6 +1638,21 @@
     <div class="hero-stat">
       <div class="hero-stat-num" data-count="3">0</div>
       <div class="hero-stat-label">つの視点で教材を設計</div>
+    </div>
+  </div>
+</section>
+
+<section class="onestep-banner" id="onestep">
+  <div class="wrap">
+    <div class="onestep-inner reveal">
+      <span class="onestep-badge">📣 無料説明会 開催決定</span>
+      <h2 class="onestep-title">【無料】航空大学校 受験対策説明会<span class="onestep-title-sub">｜Study Route One Step</span></h2>
+      <div class="onestep-info">
+        <div class="onestep-info-item">📅 7月25日（土）13:00〜13:40</div>
+        <div class="onestep-info-item">💻 オンライン（Zoom）</div>
+        <div class="onestep-info-item onestep-deadline">⏰ 申込締切：7月23日（木）17:00</div>
+      </div>
+      <a class="onestep-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header" target="_blank" rel="noopener">無料で申し込む <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
