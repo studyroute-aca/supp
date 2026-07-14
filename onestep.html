@@ -6,21 +6,21 @@
 
 <title>Study Route One Step | 航空大学校受験学習伴走サービス</title>
 
-fonts.googleapis.com">
-.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-?family=Shippori+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
-  --ink:#0A1322;
   --navy:#0E1B33;
   --navy2:#16284A;
   --gold:#C9A24B;
   --gold-light:#E0BD6E;
   --paper:#F7F5EF;
-  --paper2:#EDEAE0;
+  --paper-dark:#ECE8DA;
+  --text:#0A1322;
 }
 
 *{
@@ -29,13 +29,9 @@ fonts.googleapis.com">
   box-sizing:border-box;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
 body{
   background:var(--paper);
-  color:var(--ink);
+  color:var(--text);
   font-family:'Noto Sans JP',sans-serif;
   line-height:1.9;
 }
@@ -54,31 +50,34 @@ header{
   top:0;
   left:0;
   right:0;
+
   background:rgba(14,27,51,.95);
   backdrop-filter:blur(10px);
-  z-index:999;
+
+  z-index:1000;
 }
 
 .header-inner{
-  width:min(1100px,92%);
+  width:min(1080px,92%);
   margin:auto;
-  padding:20px 0;
 
   display:flex;
   justify-content:space-between;
   align-items:center;
+
+  padding:18px 0;
 }
 
-.brand{
-  color:white;
+.logo{
+  color:#fff;
   font-family:'Shippori Mincho',serif;
-  font-size:1.1rem;
   font-weight:700;
+  font-size:1.1rem;
 }
 
-.header-btn{
+.top-btn{
   background:var(--gold);
-  color:black;
+  color:#000;
   padding:12px 22px;
   font-weight:700;
 }
@@ -86,45 +85,50 @@ header{
 .hero{
 
   background:
-  linear-gradient(180deg,var(--ink),var(--navy2));
+  linear-gradient(
+    180deg,
+    #0A1322 0%,
+    #16284A 100%
+  );
 
   color:white;
   text-align:center;
 
   padding-top:180px;
-  padding-bottom:140px;
+  padding-bottom:120px;
 }
 
-.hero-eyebrow{
+.eyebrow{
   color:var(--gold-light);
-  letter-spacing:.2em;
   font-size:.8rem;
+  letter-spacing:.2em;
 }
 
 .hero h1{
-  margin-top:30px;
   font-family:'Shippori Mincho',serif;
   font-size:clamp(2rem,6vw,4rem);
   line-height:1.5;
+  margin-top:25px;
 }
 
 .hero h1 span{
   color:var(--gold-light);
 }
 
-.hero-sub{
-  margin-top:30px;
-  color:#d4dae5;
+.hero-text{
   max-width:700px;
-  margin-inline:auto;
+  margin:35px auto 0;
+  color:#d4dae5;
 }
 
 .hero-btn{
   display:inline-block;
   margin-top:40px;
+
   background:var(--gold);
-  color:black;
-  padding:18px 40px;
+  color:#000;
+
+  padding:18px 42px;
   font-weight:700;
 }
 
@@ -132,17 +136,11 @@ section{
   padding:100px 0;
 }
 
-.eyebrow{
-  color:var(--gold);
-  letter-spacing:.2em;
-  font-size:.75rem;
-  font-weight:700;
-}
-
 .section-title{
+  text-align:center;
   font-family:'Shippori Mincho',serif;
   font-size:2rem;
-  margin-top:15px;
+  margin-top:10px;
   margin-bottom:40px;
 }
 
@@ -150,8 +148,12 @@ section{
   text-align:center;
 }
 
+.alt{
+  background:var(--paper-dark);
+}
+
 .concept{
-  max-width:800px;
+  max-width:780px;
   margin:auto;
   text-align:center;
 }
@@ -165,3 +167,374 @@ section{
 
 .cards{
   display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;
+  margin-top:40px;
+}
+
+.card{
+  background:white;
+  padding:30px;
+  border:1px solid rgba(0,0,0,.08);
+}
+
+.card h3{
+  color:var(--navy);
+  margin-bottom:12px;
+}
+
+.price-box{
+  max-width:600px;
+  margin:auto;
+  background:white;
+  padding:50px;
+  text-align:center;
+}
+
+.price{
+  font-family:'Shippori Mincho',serif;
+  font-size:3rem;
+  color:var(--navy);
+}
+
+.flow{
+  max-width:500px;
+  margin:auto;
+  text-align:center;
+}
+
+.step{
+  margin:18px 0;
+}
+
+.arrow{
+  color:var(--gold);
+  font-size:1.5rem;
+}
+
+.cta{
+  background:linear-gradient(180deg,#16284A,#0E1B33);
+  color:white;
+  text-align:center;
+}
+
+.cta h2{
+  font-family:'Shippori Mincho',serif;
+  font-size:2rem;
+  margin-bottom:20px;
+}
+
+.cta-btn{
+  display:inline-block;
+  margin-top:25px;
+
+  background:var(--gold);
+  color:black;
+
+  padding:18px 40px;
+  font-weight:700;
+}
+
+footer{
+  background:#0A1322;
+  color:#adb5c5;
+  text-align:center;
+  padding:50px 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+Study Route One Step
+</div>
+
+ScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header"
+target="_blank">
+
+無料説明会
+
+</a>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div class="wrap">
+
+<div class="eyebrow">
+STUDY ROUTE ONE STEP
+</div>
+
+<h1>
+
+航空大学校受験を、<br>
+<span>一人にしない。</span>
+
+</h1>
+
+<p class="hero-text">
+
+授業はしない。問題解説もしない。<br><br>
+
+その代わり、
+学習計画・進捗確認・到達度測定を通じて、
+航空大学校受験を最後まで伴走する。
+
+</p>
+
+.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header"
+target="_blank">
+
+無料説明会に申し込む
+
+</a>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<div class="concept">
+
+<div class="eyebrow">
+CONCEPT
+</div>
+
+<h2 class="section-title">
+One Stepとは
+</h2>
+
+<div class="concept-main">
+
+授業はしない。<br>
+その代わり、伴走する。
+
+</div>
+
+<p>
+
+One Stepは教材や授業を売るサービスではありません。
+
+受験生が計画を立て、
+計画が崩れたら修正し、
+現在地を確認しながら前へ進むための
+学習伴走サービスです。
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="alt">
+
+<div class="wrap">
+
+<div class="center">
+
+<div class="eyebrow">
+PROBLEMS
+</div>
+
+<h2 class="section-title">
+こんな悩みありませんか？
+</h2>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>何から始めればいい？</h3>
+<p>勉強の順番や優先順位が分からない。</p>
+</div>
+
+<div class="card">
+<h3>計画が続かない</h3>
+<p>大学や仕事との両立が難しい。</p>
+</div>
+
+<div class="card">
+<h3>現在地が分からない</h3>
+<p>合格まであとどれくらいか不安。</p>
+</div>
+
+<div class="card">
+<h3>相談相手がいない</h3>
+<p>一人で受験を抱え込んでいる。</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<div class="center">
+
+<div class="eyebrow">
+SERVICE
+</div>
+
+<h2 class="section-title">
+提供サービス
+</h2>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>学習計画作成</h3>
+<p>受験までの期間から計画を設計。</p>
+</div>
+
+<div class="card">
+<h3>週次進捗確認</h3>
+<p>LINEで学習状況を確認。</p>
+</div>
+
+<div class="card">
+<h3>月例到達度検査</h3>
+<p>現在地を可視化。</p>
+</div>
+
+<div class="card">
+<h3>Zoom面談</h3>
+<p>計画の修正と方向性確認。</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="alt">
+
+<div class="wrap">
+
+<div class="center">
+
+<div class="eyebrow">
+PRICE
+</div>
+
+<h2 class="section-title">
+料金
+</h2>
+
+</div>
+
+<div class="price-box">
+
+<div class="price">
+3,980円
+</div>
+
+<p>
+月額（税込）<br><br>
+入会金なし<br>
+最低利用期間なし
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="wrap">
+
+<div class="center">
+
+<div class="eyebrow">
+FLOW
+</div>
+
+<h2 class="section-title">
+利用の流れ
+</h2>
+
+</div>
+
+<div class="flow">
+
+<div class="step">無料説明会</div>
+<div class="arrow">↓</div>
+
+<div class="step">個別相談</div>
+<div class="arrow">↓</div>
+
+<div class="step">入会</div>
+<div class="arrow">↓</div>
+
+<div class="step">学習計画作成</div>
+<div class="arrow">↓</div>
+
+<div class="step">学習開始</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<div class="wrap">
+
+<div class="eyebrow">
+FREE SEMINAR
+</div>
+
+<h2>
+航空大学校受験対策説明会
+</h2>
+
+<p>
+参加無料・オンライン開催
+</p>
+
+<a
+class="cta-btn"
+href="https://docs.google.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header"
+target="_blank">
+
+無料で申し込む
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+Study Route One Step<br>
+航空大学校受験を、一人にしない。
+
+</footer>
+
+</body>
+</html>
