@@ -4,537 +4,659 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Study Route One Step | 航空大学校受験学習伴走サービス</title>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-90Q8EX1T0F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-90Q8EX1T0F');
+</script>
+
+<title>Study Route One Step（スタディルート ワンステップ）| 航空大学校受験 学習伴走サービス</title>
+<meta name="description" content="Study Route One Stepは、航空大学校受験生のための学習伴走サービスです。授業や問題解説ではなく、学習計画の作成・週次進捗確認・月例到達度検査・Zoom面談を通じて、合格までの道のりに伴走します。">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Study Route A.C.A.">
+<meta name="theme-color" content="#0E1B33">
+<link rel="canonical" href="https://studyroute-aca.github.io/supp/onestep.html">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
+
+<!-- OGP / SNSシェア用 -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Study Route One Step">
+<meta property="og:title" content="Study Route One Step | 航空大学校受験 学習伴走サービス">
+<meta property="og:description" content="授業はしない。その代わり、伴走する。学習計画・進捗確認・到達度測定で航空大学校受験を最後まで支援する伴走サービスです。">
+<meta property="og:url" content="https://studyroute-aca.github.io/supp/onestep.html">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://studyroute-aca.github.io/supp/images/logo.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Study Route One Step | 航空大学校受験 学習伴走サービス">
+<meta name="twitter:description" content="授業はしない。その代わり、伴走する。航空大学校受験生のための学習伴走サービスです。">
+<meta name="twitter:image" content="https://studyroute-aca.github.io/supp/images/logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --ink:#0A1322;
+    --navy:#0E1B33;
+    --navy-surface:#16284A;
+    --navy-surface-2:#1C3056;
+    --gold:#C9A24B;
+    --gold-bright:#E0BD6E;
+    --paper:#F7F5EF;
+    --paper-dim:#EDEAE0;
+    --slate:#8A93A6;
+    --slate-dark:#5B6478;
+    --line:rgba(201,162,75,0.28);
+  }
 
-:root{
-  --navy:#0E1B33;
-  --navy2:#16284A;
-  --gold:#C9A24B;
-  --gold-light:#E0BD6E;
-  --paper:#F7F5EF;
-  --paper-dark:#ECE8DA;
-  --text:#0A1322;
-}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Noto Sans JP', 'Zen Kaku Gothic New', sans-serif;
+    font-weight:400;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
 
-body{
-  background:var(--paper);
-  color:var(--text);
-  font-family:'Noto Sans JP',sans-serif;
-  line-height:1.9;
-}
+  h1,h2,h3,.serif{font-family:'Shippori Mincho', serif;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%;display:block;}
 
-a{
-  text-decoration:none;
-}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
 
-.wrap{
-  width:min(1000px,90%);
-  margin:auto;
-}
+  /* ===== Route line ===== */
+  .route-line{
+    position:absolute; left:50%; top:0; bottom:0; width:2px;
+    background:linear-gradient(to bottom, transparent 0%, var(--line) 8%, var(--line) 92%, transparent 100%);
+    transform:translateX(-50%); z-index:0; pointer-events:none;
+  }
+  .route-dot{
+    position:absolute; left:50%; width:9px;height:9px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--gold);
+    transform:translate(-50%,-50%); z-index:1;
+    animation:route-pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes route-pulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(201,162,75,0.35); }
+    50%{ box-shadow:0 0 0 6px rgba(201,162,75,0); }
+  }
+  @media (prefers-reduced-motion: reduce){ .route-dot{animation:none;} }
+  @media (max-width:780px){ .route-line, .route-dot{display:none;} }
 
-header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
+  /* ===== Site table of contents ===== */
+  .site-toc{
+    background:var(--ink);
+    border-bottom:1px solid rgba(201,162,75,0.2);
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .site-toc::-webkit-scrollbar{display:none;}
+  .site-toc-inner{ display:flex; align-items:center; gap:8px; padding:14px 28px; white-space:nowrap; }
+  .site-toc-link{
+    flex-shrink:0; font-size:0.78rem; font-weight:500; color:var(--slate);
+    padding:8px 16px; border-radius:20px; transition:color 0.2s ease, background 0.2s ease;
+  }
+  .site-toc-link:hover{ color:var(--gold-bright); background:rgba(201,162,75,0.1); }
 
-  background:rgba(14,27,51,.95);
-  backdrop-filter:blur(10px);
+  /* ===== Header ===== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(14,27,51,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(201,162,75,0.2);
+  }
+  .header-inner{
+    max-width:1040px; margin:0 auto; padding:18px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    color:var(--paper); font-family:'Shippori Mincho', serif;
+    font-size:1.05rem; font-weight:700; letter-spacing:0.04em;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand .dot{color:var(--gold);}
+  .brand .sub{
+    font-family:'Noto Sans JP', sans-serif; font-size:0.62rem;
+    color:var(--slate); font-weight:400; letter-spacing:0.08em;
+  }
+  .header-links{ display:flex; align-items:center; gap:16px; }
+  .header-back{
+    color:var(--paper); font-size:0.8rem; font-weight:500; opacity:0.8;
+    transition:opacity 0.2s ease;
+  }
+  .header-back:hover{opacity:1; color:var(--gold-bright);}
+  .header-cta{
+    background:var(--gold); color:var(--ink); font-size:0.82rem; font-weight:700;
+    padding:9px 20px; border-radius:2px; letter-spacing:0.03em;
+    transition:background 0.2s ease, transform 0.2s ease; white-space:nowrap;
+  }
+  .header-cta:hover{background:var(--gold-bright); transform:translateY(-1px);}
+  @media (max-width:640px){ .header-back{display:none;} }
 
-  z-index:1000;
-}
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(201,162,75,0.13), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--navy) 55%, var(--navy-surface) 100%);
+    color:var(--paper); padding:170px 28px 120px; text-align:center; overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,162,75,0.035) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,162,75,0.035) 40px);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    position:relative; display:inline-flex; align-items:center; gap:10px;
+    font-size:0.74rem; letter-spacing:0.22em; color:var(--gold-bright);
+    margin-bottom:34px; font-weight:500;
+  }
+  .hero-eyebrow::before,.hero-eyebrow::after{ content:""; width:24px; height:1px; background:var(--gold); }
+  .hero h1{
+    position:relative; font-size:clamp(2rem, 5.2vw, 3.4rem); font-weight:700;
+    line-height:1.55; letter-spacing:0.02em; margin-bottom:14px;
+  }
+  .hero h1 .accent{color:var(--gold-bright);}
+  .hero p.lead{
+    position:relative; max-width:600px; margin:28px auto 0; color:var(--slate);
+    font-size:1rem; line-height:2.1;
+  }
+  .hero-not{
+    position:relative; font-family:'Shippori Mincho', serif; font-size:clamp(0.95rem, 2vw, 1.1rem);
+    font-weight:600; color:var(--gold-bright); letter-spacing:0.04em; margin-top:26px;
+  }
+  .hero-actions{ position:relative; display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:44px; }
 
-.header-inner{
-  width:min(1080px,92%);
-  margin:auto;
+  .btn-primary{
+    background:var(--gold); color:var(--ink); font-weight:700; font-size:0.95rem;
+    padding:17px 38px; border-radius:2px; letter-spacing:0.03em;
+    box-shadow:0 8px 30px rgba(201,162,75,0.25); transition:all 0.25s ease;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 12px 36px rgba(201,162,75,0.35); }
+  .btn-primary .arrow{transition:transform 0.25s ease;}
+  .btn-primary:hover .arrow{transform:translateX(4px);}
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  .btn-ghost{
+    border:1px solid rgba(247,245,239,0.25); color:var(--paper); font-size:0.95rem;
+    font-weight:500; padding:17px 32px; border-radius:2px; transition:all 0.25s ease;
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold-bright);}
 
-  padding:18px 0;
-}
+  /* ===== Section generic ===== */
+  section{position:relative; padding:104px 0;}
+  .section-light{background:var(--paper);}
+  .section-dim{background:var(--paper-dim);}
 
-.logo{
-  color:#fff;
-  font-family:'Shippori Mincho',serif;
-  font-weight:700;
-  font-size:1.1rem;
-}
+  .eyebrow{
+    font-size:0.72rem; letter-spacing:0.2em; color:var(--gold); font-weight:700;
+    margin-bottom:18px; display:block;
+  }
+  .section-title{ font-size:clamp(1.5rem, 3vw, 2.1rem); font-weight:700; line-height:1.6; margin-bottom:24px; }
+  .section-title.center{text-align:center;}
+  .section-lead{ color:var(--slate-dark); font-size:0.97rem; max-width:620px; line-height:2; }
+  .section-lead.center{margin:0 auto; text-align:center;}
 
-.top-btn{
-  background:var(--gold);
-  color:#000;
-  padding:12px 22px;
-  font-weight:700;
-}
+  /* ===== Concept ===== */
+  .concept-block{ text-align:center; max-width:760px; margin:0 auto; }
+  .concept-phrase{
+    font-size:clamp(1.4rem, 3.4vw, 2.1rem); font-weight:800; color:var(--navy);
+    line-height:1.9; margin:34px 0; position:relative; display:inline-block;
+  }
+  .concept-phrase::before{
+    content:""; display:block; width:1px; height:48px; background:var(--gold); margin:0 auto 28px;
+  }
+  .concept-body{ color:var(--slate-dark); font-size:0.97rem; line-height:2.1; text-align:left; margin-top:40px; }
+  .concept-body p{margin-bottom:1.4em;}
 
-.hero{
+  /* ===== Cards (problems / service) ===== */
+  .card-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:rgba(201,162,75,0.25); margin-top:56px; border:1px solid rgba(201,162,75,0.25);
+  }
+  .card-grid.two-col{grid-template-columns:repeat(2,1fr);}
+  .info-card{
+    background:var(--paper); padding:38px 28px; position:relative;
+    transition:background 0.3s ease, transform 0.3s ease;
+  }
+  .info-card::before{
+    content:""; position:absolute; top:0; left:0; width:0; height:2px; background:var(--gold);
+    transition:width 0.35s ease;
+  }
+  .info-card:hover{ background:var(--paper-dim); transform:translateY(-3px); }
+  .info-card:hover::before{width:100%;}
+  .info-card .num{
+    font-family:'Shippori Mincho', serif; font-size:0.82rem; color:var(--gold);
+    font-weight:700; letter-spacing:0.08em; margin-bottom:16px; display:block;
+  }
+  .info-card h3{ font-size:1.02rem; font-weight:700; color:var(--navy); margin-bottom:12px; line-height:1.6; }
+  .info-card p{ font-size:0.86rem; color:var(--slate-dark); line-height:1.9; }
+  @media (max-width:780px){
+    .card-grid{grid-template-columns:1fr;}
+    .card-grid.two-col{grid-template-columns:1fr;}
+  }
 
-  background:
-  linear-gradient(
-    180deg,
-    #0A1322 0%,
-    #16284A 100%
-  );
+  /* ===== Price ===== */
+  .price-box{
+    max-width:560px; margin:52px auto 0; background:var(--paper);
+    border:1px solid rgba(201,162,75,0.3); padding:56px 48px; text-align:center;
+    box-shadow:0 24px 60px rgba(10,19,34,0.08);
+  }
+  .price-label{
+    font-size:0.74rem; letter-spacing:0.16em; color:var(--gold); font-weight:700; margin-bottom:20px;
+  }
+  .price-num{
+    font-family:'Shippori Mincho', serif; font-size:clamp(2.4rem, 6vw, 3.4rem);
+    font-weight:800; color:var(--navy); line-height:1;
+  }
+  .price-num .unit{ font-size:0.4em; font-weight:600; color:var(--slate-dark); margin-left:6px; }
+  .price-sub{ font-size:0.86rem; color:var(--slate-dark); margin-top:22px; line-height:2; }
+  .price-tags{
+    display:flex; gap:10px; justify-content:center; margin-top:26px; flex-wrap:wrap;
+  }
+  .price-tag{
+    font-size:0.78rem; color:var(--slate-dark); border:1px solid rgba(201,162,75,0.3);
+    padding:6px 16px; border-radius:20px; font-weight:500;
+  }
 
-  color:white;
-  text-align:center;
+  /* ===== Flow (vertical steps) ===== */
+  .flow-list{ max-width:520px; margin:56px auto 0; }
+  .flow-step{
+    display:flex; align-items:center; gap:24px; padding:20px 0;
+    position:relative;
+  }
+  .flow-step-num{
+    flex-shrink:0; width:48px; height:48px; border-radius:50%; border:1.5px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Shippori Mincho', serif; font-size:0.92rem; font-weight:700; color:var(--gold);
+  }
+  .flow-step-text{ font-size:0.98rem; font-weight:600; color:var(--navy); }
+  .flow-connector{
+    width:1.5px; height:28px; background:rgba(201,162,75,0.4); margin:0 0 0 23px;
+  }
 
-  padding-top:180px;
-  padding-bottom:120px;
-}
+  /* ===== Not-service list (何をしないか) ===== */
+  .not-list{ max-width:680px; margin:56px auto 0; }
+  .not-row{
+    display:flex; gap:24px; padding:24px 0; border-bottom:1px solid rgba(201,162,75,0.18);
+    align-items:baseline;
+  }
+  .not-mark{
+    font-family:'Shippori Mincho', serif; font-size:1.1rem; color:var(--gold);
+    font-weight:700; flex-shrink:0;
+  }
+  .not-text{ font-size:0.95rem; color:var(--ink); font-weight:500; line-height:1.9; }
+  .not-text .strike{ text-decoration:line-through; color:var(--slate); font-weight:400; }
 
-.eyebrow{
-  color:var(--gold-light);
-  font-size:.8rem;
-  letter-spacing:.2em;
-}
+  /* ===== One Step banner (seminar CTA) ===== */
+  .onestep-banner{
+    position:relative;
+    background:linear-gradient(180deg, #FCFAF2 0%, #F1E8CC 100%);
+    border-top:1px solid rgba(201,162,75,0.4);
+    border-bottom:1px solid rgba(201,162,75,0.4);
+    padding:64px 28px; text-align:center; overflow:hidden;
+  }
+  .onestep-inner{ position:relative; max-width:640px; margin:0 auto; }
+  .onestep-badge{
+    display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:var(--gold-bright);
+    font-size:0.8rem; font-weight:700; padding:8px 20px; border-radius:20px;
+    letter-spacing:0.02em; margin-bottom:26px;
+  }
+  .onestep-title{
+    font-family:'Shippori Mincho', serif; font-size:clamp(1.3rem, 3.2vw, 1.7rem);
+    font-weight:700; color:var(--navy); line-height:1.75; margin-bottom:30px;
+  }
+  .onestep-title-sub{
+    display:block; font-size:0.58em; font-weight:600; color:var(--slate-dark);
+    margin-top:6px; letter-spacing:0.02em;
+  }
+  .onestep-info{
+    display:flex; flex-direction:column; align-items:center; gap:13px;
+    margin-bottom:36px; font-size:1rem; color:var(--ink); font-weight:500;
+  }
+  .onestep-deadline{ color:var(--navy); font-weight:700; }
+  .onestep-cta{
+    display:inline-flex; align-items:center; gap:10px; background:var(--navy); color:var(--gold-bright);
+    font-weight:700; font-size:1.02rem; padding:19px 46px; border-radius:2px; letter-spacing:0.03em;
+    box-shadow:0 10px 28px rgba(14,27,51,0.18); transition:all 0.25s ease;
+  }
+  .onestep-cta:hover{ background:var(--ink); transform:translateY(-2px); box-shadow:0 14px 34px rgba(14,27,51,0.24); }
+  .onestep-cta .arrow{transition:transform 0.25s ease;}
+  .onestep-cta:hover .arrow{transform:translateX(4px);}
+  @media (max-width:600px){
+    .onestep-banner{padding:48px 20px;}
+    .onestep-cta{width:100%; justify-content:center;}
+  }
 
-.hero h1{
-  font-family:'Shippori Mincho',serif;
-  font-size:clamp(2rem,6vw,4rem);
-  line-height:1.5;
-  margin-top:25px;
-}
+  /* ===== note-style CTA (dark closer) ===== */
+  .close-cta{
+    position:relative;
+    background:linear-gradient(135deg, var(--ink) 0%, var(--navy) 60%, var(--navy-surface-2) 100%);
+    color:var(--paper); padding:100px 28px; text-align:center; overflow:hidden;
+  }
+  .close-cta::before{
+    content:""; position:absolute; top:-40%; left:50%; width:700px; height:700px;
+    background:radial-gradient(circle, rgba(201,162,75,0.18), transparent 65%);
+    transform:translateX(-50%); pointer-events:none;
+  }
+  .close-cta-eyebrow{
+    position:relative; font-size:0.74rem; letter-spacing:0.22em; color:var(--gold-bright);
+    font-weight:700; margin-bottom:22px;
+  }
+  .close-cta h2{
+    position:relative; font-size:clamp(1.4rem, 3.2vw, 2rem); font-weight:700;
+    line-height:1.7; margin-bottom:18px;
+  }
+  .close-cta p{
+    position:relative; color:var(--slate); max-width:520px; margin:0 auto 40px;
+    font-size:0.95rem; line-height:2;
+  }
+  .close-cta .btn-primary{ position:relative; font-size:1.02rem; padding:20px 48px; }
 
-.hero h1 span{
-  color:var(--gold-light);
-}
+  /* ===== Footer ===== */
+  footer{ background:var(--ink); color:var(--slate); padding:56px 28px 36px; text-align:center; }
+  .footer-brand{
+    font-family:'Shippori Mincho', serif; color:var(--paper); font-size:1.1rem;
+    font-weight:700; margin-bottom:10px;
+  }
+  .footer-tagline{ font-size:0.85rem; color:var(--gold-bright); margin-bottom:30px; letter-spacing:0.04em; }
+  .footer-links{ margin-bottom:24px; }
+  .footer-links a{
+    font-size:0.74rem; color:var(--slate); text-decoration:underline;
+    text-underline-offset:3px; transition:color 0.2s ease;
+  }
+  .footer-links a:hover{color:var(--gold-bright);}
+  .footer-links-sep{ color:var(--slate-dark); font-size:0.74rem; margin:0 10px; }
+  .footer-bottom{
+    font-size:0.72rem; color:var(--slate-dark); border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:24px; margin-top:10px;
+  }
 
-.hero-text{
-  max-width:700px;
-  margin:35px auto 0;
-  color:#d4dae5;
-}
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
 
-.hero-btn{
-  display:inline-block;
-  margin-top:40px;
+  @media (max-width:780px){
+    section{padding:72px 0;}
+    .hero{padding:140px 24px 84px;}
+  }
 
-  background:var(--gold);
-  color:#000;
-
-  padding:18px 42px;
-  font-weight:700;
-}
-
-section{
-  padding:100px 0;
-}
-
-.section-title{
-  text-align:center;
-  font-family:'Shippori Mincho',serif;
-  font-size:2rem;
-  margin-top:10px;
-  margin-bottom:40px;
-}
-
-.center{
-  text-align:center;
-}
-
-.alt{
-  background:var(--paper-dark);
-}
-
-.concept{
-  max-width:780px;
-  margin:auto;
-  text-align:center;
-}
-
-.concept-main{
-  font-family:'Shippori Mincho',serif;
-  font-size:2rem;
-  line-height:2;
-  margin-bottom:40px;
-}
-
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:24px;
-  margin-top:40px;
-}
-
-.card{
-  background:white;
-  padding:30px;
-  border:1px solid rgba(0,0,0,.08);
-}
-
-.card h3{
-  color:var(--navy);
-  margin-bottom:12px;
-}
-
-.price-box{
-  max-width:600px;
-  margin:auto;
-  background:white;
-  padding:50px;
-  text-align:center;
-}
-
-.price{
-  font-family:'Shippori Mincho',serif;
-  font-size:3rem;
-  color:var(--navy);
-}
-
-.flow{
-  max-width:500px;
-  margin:auto;
-  text-align:center;
-}
-
-.step{
-  margin:18px 0;
-}
-
-.arrow{
-  color:var(--gold);
-  font-size:1.5rem;
-}
-
-.cta{
-  background:linear-gradient(180deg,#16284A,#0E1B33);
-  color:white;
-  text-align:center;
-}
-
-.cta h2{
-  font-family:'Shippori Mincho',serif;
-  font-size:2rem;
-  margin-bottom:20px;
-}
-
-.cta-btn{
-  display:inline-block;
-  margin-top:25px;
-
-  background:var(--gold);
-  color:black;
-
-  padding:18px 40px;
-  font-weight:700;
-}
-
-footer{
-  background:#0A1322;
-  color:#adb5c5;
-  text-align:center;
-  padding:50px 20px;
-}
-
+  :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
 </style>
 </head>
-
 <body>
 
 <header>
-
-<div class="header-inner">
-
-<div class="logo">
-Study Route One Step
-</div>
-
-ScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header"
-target="_blank">
-
-無料説明会
-
-</a>
-
-</div>
-
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span>Study Route <span class="dot">One Step</span><span class="sub">学習伴走サービス</span></span>
+    </a>
+    <div class="header-links">
+      <a href="index.html" class="header-back">Study Route A.C.A. トップへ</a>
+      <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header" target="_blank" rel="noopener">無料説明会に申し込む</a>
+    </div>
+  </div>
 </header>
 
 <section class="hero">
-
-<div class="wrap">
-
-<div class="eyebrow">
-STUDY ROUTE ONE STEP
-</div>
-
-<h1>
-
-航空大学校受験を、<br>
-<span>一人にしない。</span>
-
-</h1>
-
-<p class="hero-text">
-
-授業はしない。問題解説もしない。<br><br>
-
-その代わり、
-学習計画・進捗確認・到達度測定を通じて、
-航空大学校受験を最後まで伴走する。
-
-</p>
-
-.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header"
-target="_blank">
-
-無料説明会に申し込む
-
-</a>
-
-</div>
-
+  <span class="hero-eyebrow">STUDY ROUTE ONE STEP</span>
+  <h1>航空大学校受験を、<br><span class="accent">一人にしない。</span></h1>
+  <p class="hero-not">授業はしない。問題解説もしない。</p>
+  <p class="lead">
+    その代わり、学習計画の作成・週次の進捗確認・月例の到達度測定を通じて、<br>
+    航空大学校受験を最後まで伴走する学習伴走サービスです。
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header" target="_blank" rel="noopener">無料説明会に申し込む <span class="arrow">→</span></a>
+    <a class="btn-ghost" href="#service">サービス内容を見る</a>
+  </div>
 </section>
 
-<section>
+<nav class="site-toc" aria-label="ページ内目次">
+  <div class="wrap site-toc-inner">
+    <a href="#concept" class="site-toc-link">コンセプト</a>
+    <a href="#problems" class="site-toc-link">こんな悩み</a>
+    <a href="#service" class="site-toc-link">提供サービス</a>
+    <a href="#price" class="site-toc-link">料金</a>
+    <a href="#flow" class="site-toc-link">利用の流れ</a>
+    <a href="#seminar" class="site-toc-link">無料説明会</a>
+  </div>
+</nav>
 
-<div class="wrap">
-
-<div class="concept">
-
-<div class="eyebrow">
-CONCEPT
-</div>
-
-<h2 class="section-title">
-One Stepとは
-</h2>
-
-<div class="concept-main">
-
-授業はしない。<br>
-その代わり、伴走する。
-
-</div>
-
-<p>
-
-One Stepは教材や授業を売るサービスではありません。
-
-受験生が計画を立て、
-計画が崩れたら修正し、
-現在地を確認しながら前へ進むための
-学習伴走サービスです。
-
-</p>
-
-</div>
-
-</div>
-
+<section class="section-light" id="concept" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:0;"></div>
+  <div class="wrap">
+    <div class="concept-block reveal">
+      <span class="eyebrow">CONCEPT</span>
+      <p class="concept-phrase">授業はしない。<br>その代わり、伴走する。</p>
+      <div class="concept-body">
+        <p>Study Route One Step は、教材や授業を売るサービスではありません。受験生自身が学習計画を立て、計画が崩れたら修正し、今の自分の到達度を確認しながら前に進んでいくための学習伴走サービスです。</p>
+        <p>航空大学校対策は情報が限られており、「何から手をつければいいか分からない」「一人で計画を続けるのが難しい」という受験生が少なくありません。One Stepは、そうした受験生の隣に立ち続けることを目的にしています。</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="alt">
+<section class="section-dim" id="problems" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">PROBLEMS</span>
+      <h2 class="section-title center">こんな悩みありませんか？</h2>
+      <p class="section-lead center">航空大学校受験生から、実際によく聞く声です。</p>
+    </div>
 
-<div class="wrap">
-
-<div class="center">
-
-<div class="eyebrow">
-PROBLEMS
-</div>
-
-<h2 class="section-title">
-こんな悩みありませんか？
-</h2>
-
-</div>
-
-<div class="cards">
-
-<div class="card">
-<h3>何から始めればいい？</h3>
-<p>勉強の順番や優先順位が分からない。</p>
-</div>
-
-<div class="card">
-<h3>計画が続かない</h3>
-<p>大学や仕事との両立が難しい。</p>
-</div>
-
-<div class="card">
-<h3>現在地が分からない</h3>
-<p>合格まであとどれくらいか不安。</p>
-</div>
-
-<div class="card">
-<h3>相談相手がいない</h3>
-<p>一人で受験を抱え込んでいる。</p>
-</div>
-
-</div>
-
-</div>
-
+    <div class="card-grid reveal">
+      <div class="info-card">
+        <span class="num">01</span>
+        <h3>何から始めればいい？</h3>
+        <p>勉強の順番や優先順位が分からない。</p>
+      </div>
+      <div class="info-card">
+        <span class="num">02</span>
+        <h3>計画が続かない</h3>
+        <p>大学や仕事との両立が難しい。</p>
+      </div>
+      <div class="info-card">
+        <span class="num">03</span>
+        <h3>現在地が分からない</h3>
+        <p>合格まであとどれくらいか不安。</p>
+      </div>
+      <div class="info-card">
+        <span class="num">04</span>
+        <h3>相談相手がいない</h3>
+        <p>一人で受験を抱え込んでいる。</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
+<section class="section-light" id="service" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">SERVICE</span>
+      <h2 class="section-title center">提供サービス</h2>
+      <p class="section-lead center">学習計画・進捗確認・到達度測定・面談の4本柱で伴走します。</p>
+    </div>
 
-<div class="wrap">
+    <div class="card-grid reveal">
+      <div class="info-card">
+        <span class="num">Plan</span>
+        <h3>学習計画作成</h3>
+        <p>受験までの残り期間から、逆算した学習計画を設計します。</p>
+      </div>
+      <div class="info-card">
+        <span class="num">Check</span>
+        <h3>週次進捗確認</h3>
+        <p>LINEで週ごとの学習状況を確認します。</p>
+      </div>
+      <div class="info-card">
+        <span class="num">Test</span>
+        <h3>月例到達度検査</h3>
+        <p>単元テストで、今の到達度を可視化します。</p>
+      </div>
+      <div class="info-card">
+        <span class="num">Talk</span>
+        <h3>Zoom面談</h3>
+        <p>計画の修正と、今後の方向性をすり合わせます。</p>
+      </div>
+    </div>
 
-<div class="center">
-
-<div class="eyebrow">
-SERVICE
-</div>
-
-<h2 class="section-title">
-提供サービス
-</h2>
-
-</div>
-
-<div class="cards">
-
-<div class="card">
-<h3>学習計画作成</h3>
-<p>受験までの期間から計画を設計。</p>
-</div>
-
-<div class="card">
-<h3>週次進捗確認</h3>
-<p>LINEで学習状況を確認。</p>
-</div>
-
-<div class="card">
-<h3>月例到達度検査</h3>
-<p>現在地を可視化。</p>
-</div>
-
-<div class="card">
-<h3>Zoom面談</h3>
-<p>計画の修正と方向性確認。</p>
-</div>
-
-</div>
-
-</div>
-
+    <div class="not-list reveal">
+      <div class="not-row">
+        <div class="not-mark">✕</div>
+        <div class="not-text"><span class="strike">授業・講義配信</span> は行いません</div>
+      </div>
+      <div class="not-row">
+        <div class="not-mark">✕</div>
+        <div class="not-text"><span class="strike">個別の問題解説・添削</span> は行いません</div>
+      </div>
+      <div class="not-row">
+        <div class="not-mark">◯</div>
+        <div class="not-text">学習計画・進捗管理・到達度測定・面談による「伴走」に特化しています</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="alt">
+<section class="section-dim" id="price" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">PRICE</span>
+      <h2 class="section-title center">料金</h2>
+    </div>
 
-<div class="wrap">
-
-<div class="center">
-
-<div class="eyebrow">
-PRICE
-</div>
-
-<h2 class="section-title">
-料金
-</h2>
-
-</div>
-
-<div class="price-box">
-
-<div class="price">
-3,980円
-</div>
-
-<p>
-月額（税込）<br><br>
-入会金なし<br>
-最低利用期間なし
-</p>
-
-</div>
-
-</div>
-
+    <div class="price-box reveal">
+      <div class="price-label">月額（税込）</div>
+      <div class="price-num">3,980<span class="unit">円 / 月</span></div>
+      <p class="price-sub">入会金なし ／ 最低利用期間なし ／ いつでも解約可能</p>
+      <div class="price-tags">
+        <span class="price-tag">学習計画作成</span>
+        <span class="price-tag">週次進捗確認</span>
+        <span class="price-tag">月例到達度検査</span>
+        <span class="price-tag">Zoom面談</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
+<section class="section-light" id="flow" style="position:relative;">
+  <div class="route-line"></div>
+  <div class="route-dot" style="top:64px;"></div>
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow">FLOW</span>
+      <h2 class="section-title center">利用の流れ</h2>
+      <p class="section-lead center">無料説明会から、学習開始までの流れです。</p>
+    </div>
 
-<div class="wrap">
-
-<div class="center">
-
-<div class="eyebrow">
-FLOW
-</div>
-
-<h2 class="section-title">
-利用の流れ
-</h2>
-
-</div>
-
-<div class="flow">
-
-<div class="step">無料説明会</div>
-<div class="arrow">↓</div>
-
-<div class="step">個別相談</div>
-<div class="arrow">↓</div>
-
-<div class="step">入会</div>
-<div class="arrow">↓</div>
-
-<div class="step">学習計画作成</div>
-<div class="arrow">↓</div>
-
-<div class="step">学習開始</div>
-
-</div>
-
-</div>
-
+    <div class="flow-list reveal">
+      <div class="flow-step">
+        <div class="flow-step-num">1</div>
+        <div class="flow-step-text">無料説明会に参加（任意）</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-num">2</div>
+        <div class="flow-step-text">個別相談（任意）</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-num">3</div>
+        <div class="flow-step-text">入会</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-num">4</div>
+        <div class="flow-step-text">学習計画作成</div>
+      </div>
+      <div class="flow-connector"></div>
+      <div class="flow-step">
+        <div class="flow-step-num">5</div>
+        <div class="flow-step-text">学習開始</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="cta">
+<section class="onestep-banner" id="seminar">
+  <div class="wrap">
+    <div class="onestep-inner reveal">
+      <span class="onestep-badge">📢 無料説明会 開催決定</span>
+      <h2 class="onestep-title">【無料】航空大学校 受験対策説明会<span class="onestep-title-sub">｜Study Route One Step</span></h2>
+      <div class="onestep-info">
+        <div>📅 7月25日（土）13:00〜13:40</div>
+        <div>💻 オンライン（Zoom）</div>
+        <div class="onestep-deadline">⏰ 申込締切：7月23日（木）17:00</div>
+      </div>
+      <a class="onestep-cta" href="https://docs.google.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header" target="_blank" rel="noopener">無料で申し込む <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
 
-<div class="wrap">
-
-<div class="eyebrow">
-FREE SEMINAR
-</div>
-
-<h2>
-航空大学校受験対策説明会
-</h2>
-
-<p>
-参加無料・オンライン開催
-</p>
-
-<a
-class="cta-btn"
-href="https://docs.google.com/forms/d/e/1FAIpQLScPphjRkcYWJfd4o7fkttwh9akXnKVPS0e8kk2POiYu01dgoA/viewform?usp=header"
-target="_blank">
-
-無料で申し込む
-
-</a>
-
-</div>
-
+<section class="close-cta">
+  <span class="close-cta-eyebrow">STUDY ROUTE A.C.A.</span>
+  <h2>教材だけでは足りないと感じたら。</h2>
+  <p>
+    航空大学校対策の教材はnoteで発信しています。演習と伴走、どちらも必要な受験生のために、
+    Study Route A.C.A. と One Step は連携して受験生を支えています。
+  </p>
+  <a class="btn-primary" href="index.html">Study Route A.C.A. トップへ戻る <span class="arrow">→</span></a>
 </section>
 
 <footer>
+  <div class="footer-brand">Study Route One Step</div>
+  <div class="footer-tagline">航空大学校受験を、一人にしない。</div>
 
-Study Route One Step<br>
-航空大学校受験を、一人にしない。
+  <div class="footer-links">
+    <a href="privacy-policy.pdf" target="_blank" rel="noopener">個人情報保護方針</a>
+    <span class="footer-links-sep">／</span>
+    <a href="tokushoho.pdf" target="_blank" rel="noopener">特定商取引法に基づく表記</a>
+    <span class="footer-links-sep">／</span>
+    <a href="index.html">Study Route A.C.A.</a>
+  </div>
 
+  <div class="footer-bottom">&copy; Study Route A.C.A. All Rights Reserved.</div>
 </footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  els.forEach(el=>io.observe(el));
+</script>
 
 </body>
 </html>
