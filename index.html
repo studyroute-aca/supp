@@ -2102,18 +2102,7 @@
         <h3>採用について</h3>
         <p>チームメンバーの募集に関するお問い合わせです。</p>
       </div>
-      // ニュースの折りたたみ
-  function toggleNewsMore(){
-    const more = document.getElementById('news-more');
-    const btn = document.getElementById('news-toggle-btn');
-    if(more.style.display === 'none'){
-      more.style.display = 'block';
-      btn.textContent = '折りたたむ ▲';
-    } else {
-      more.style.display = 'none';
-      btn.textContent = '過去のお知らせをもっと見る ▼';
-    }
-  }
+    
       <button type="button" class="btn-ghost recruit-btn" onclick="showRecruitMessage()">採用について問い合わせる</button>
       <p class="recruit-message" id="recruit-message">ただいま受け付けておりません。</p>
     </div>
@@ -2329,7 +2318,23 @@
       }
     });
   });
+// ニュースの折りたたみ
+  function toggleNewsMore(){
+    const more = document.getElementById('news-more');
+    const btn = document.getElementById('news-toggle-btn');
+    if(more.style.display === 'none'){
+      more.style.display = 'block';
+      btn.textContent = '折りたたむ ▲';
+    } else {
+      more.style.display = 'none';
+      btn.textContent = '過去のお知らせをもっと見る ▼';
+    }
+  }
 
+  // 採用ボタン
+  function showRecruitMessage(){
+    document.getElementById('recruit-message').classList.add('show');
+  }
   // 採用ボタン
   function showRecruitMessage(){
     document.getElementById('recruit-message').classList.add('show');
