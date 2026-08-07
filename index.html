@@ -1502,8 +1502,8 @@
   margin:-120px auto 80px;
   padding:70px 50px;
   background:var(--paper);
-  border:2px solid var(--gold);
-  box-shadow:0 20px 60px rgba(10,19,34,0.10);
+  border:3px solid var(--gold);
+box-shadow:0 20px 60px rgba(10,19,34,0.10);
   position:relative;
   z-index:10;
 }
@@ -1512,6 +1512,17 @@
   padding:24px 60px;
   font-size:1.1rem;
 }
+  .onestep-highlight::before{
+  content:"";
+  position:absolute;
+  top:18px;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  border:1px solid var(--gold);
+  pointer-events:none;
+}
+
 
   /* ===== One Step banner (special announcement) ===== */
   .onestep-banner{
@@ -1676,7 +1687,7 @@
           margin-bottom:22px;
         "
       >
-        NEW SERVICE
+        個別指導のご案内
       </span>
 
       <div
