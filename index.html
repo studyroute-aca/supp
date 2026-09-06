@@ -345,21 +345,26 @@
     pointer-events:none;
   }
   .hero-eyebrow{
-    position:relative;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    font-size:0.74rem;
-    letter-spacing:0.22em;
-    color:var(--gold-bright);
-    margin-bottom:34px;
-    font-weight:500;
-  }
-  .hero-eyebrow::before,.hero-eyebrow::after{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+
+  font-size:1rem;
+  letter-spacing:0.35em;
+  color:var(--gold);
+  font-weight:500;
+
+  font-family:'Noto Sans JP', sans-serif;
+  text-transform:uppercase;
+}
+ .hero-eyebrow::before,
+.hero-eyebrow::after{
     content:"";
-    width:24px; height:1px;
+    width:70px;
+    height:1px;
     background:var(--gold);
-  }
+}
   .hero h1{
     position:relative;
     font-size:clamp(2.1rem, 5.4vw, 3.6rem);
