@@ -191,10 +191,10 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
 @media(prefers-reduced-motion:reduce){.section-mark:before,.kicker.lead-in,.heading-in,.body-in,.from-left,.from-right,.zone-wipe:after,.list-in>*,.count-in{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;width:auto!important}}
 
 /* news */
-.news{padding:60px 0}
+.news{padding:60px 0;background:#fff;color:var(--red);}
 .news-grid{display:grid;grid-template-columns:190px minmax(0,1fr);gap:6vw;align-items:start}
 .news-list{padding-top:9px}
-.news-list a{display:grid;grid-template-columns:118px minmax(0,1fr);gap:26px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.38);position:relative;transition:padding .45s var(--ease),transform .45s var(--ease)}
+.news-list a{display:grid;grid-template-columns:118px minmax(0,1fr);gap:26px;padding:18px 0;border-bottom:1px solid rgba(204,1,16,.25);
 .news-list a:hover{padding-left:14px;transform:translateX(8px)}
 .news-date{font:18px "Century Schoolbook","Century",Georgia,serif}
 .news-text{font-size:.91rem}
@@ -454,7 +454,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
   <div class="scroll">Scroll</div>
 </section>
 
-<section class="news red section-mark reveal" id="news">
+<section class="news section-mark reveal" id="news">
   <div class="wrap news-grid">
     <div>
       <p class="kicker lead-in reveal">News</p>
