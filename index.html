@@ -40,7 +40,6 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
 .section{position:relative;padding:var(--section-space) 0}
 .red{background:var(--red);color:#fff}
 .cream{background:var(--cream)}
-.red .kicker,.red h2,.red .caption,.red .lead,.red .body-copy,.red .more{color:inherit}
 
 /* loader: progresses with mouse movement (touch/scroll as fallback), auto-completes as a safety net */
 :root{--intro:0}
@@ -192,10 +191,10 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
 @media(prefers-reduced-motion:reduce){.section-mark:before,.kicker.lead-in,.heading-in,.body-in,.from-left,.from-right,.zone-wipe:after,.list-in>*,.count-in{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;width:auto!important}}
 
 /* news */
-.news{padding:60px 0;background:#fff;color:var(--red);}
+.news{padding:60px 0}
 .news-grid{display:grid;grid-template-columns:190px minmax(0,1fr);gap:6vw;align-items:start}
 .news-list{padding-top:9px}
-.news-list a{display:grid;grid-template-columns:118px minmax(0,1fr);gap:26px;padding:18px 0;border-bottom:1px solid rgba(204,1,16,.25);
+.news-list a{display:grid;grid-template-columns:118px minmax(0,1fr);gap:26px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.38);position:relative;transition:padding .45s var(--ease),transform .45s var(--ease)}
 .news-list a:hover{padding-left:14px;transform:translateX(8px)}
 .news-date{font:18px "Century Schoolbook","Century",Georgia,serif}
 .news-text{font-size:.91rem}
@@ -219,7 +218,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
 .onestep-section .btn[href*="lin.ee"]{background:#06c755;border-color:#06c755;color:#fff;box-shadow:0 14px 34px rgba(0,60,28,.18)}
 .onestep-section .btn[href*="lin.ee"]:hover{background:#fff;color:#06a947;border-color:#fff}
 .onestep-media{position:relative;margin-right:-5vw;z-index:1}
-.onestep-media img{width:100%;height:700px;object-fit:cover;object-position:center;display:block;}
+.onestep-media img,.onestep-fallback{width:100%;height:700px;object-fit:cover;object-position:center top;display:block;}
 .onestep-fallback{background:linear-gradient(135deg,#faf2f3,#e1969f)}
 .onestep-flow{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.5);padding-top:26px;gap:24px}
 .onestep-flow div{font-size:.84rem;line-height:1.9}
@@ -455,7 +454,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
   <div class="scroll">Scroll</div>
 </section>
 
-<section class="news section-mark reveal" id="news">
+<section class="news red section-mark reveal" id="news">
   <div class="wrap news-grid">
     <div>
       <p class="kicker lead-in reveal">News</p>
@@ -494,6 +493,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
       </div>
     </div>
     <div class="onestep-media image-reveal from-right reveal">
+      <div class="onestep-fallback"></div>
       <img src="images/22719161_l.jpg" alt="Study Route One Stepの学習伴走イメージ">
     </div>
   </div>
@@ -549,7 +549,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
 </section>
 
 <!-- ===== Materials: reframed as part of One Step, not the main offer ===== -->
-<section class="section red zone-wipe reveal" id="materials">
+<section class="section section-mark reveal" id="materials">
   <div class="wrap">
     <div class="slider-head reveal">
       <div class="materials-note">
@@ -558,8 +558,8 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
         <p class="lead body-in reveal">教材・模擬試験は、One Stepの学習伴走の中で活用するコンテンツの一部です。単体でも公開していますが、本来は個別カリキュラムに組み込んで使うことを想定しています。</p>
       </div>
       <div class="swiper-nav">
-        <button class="navbtn mat-prev" aria-label="前へ" style="border-color:#fff">←</button>
-        <button class="navbtn mat-next" aria-label="次へ" style="border-color:#fff">→</button>
+        <button class="navbtn mat-prev" aria-label="前へ">←</button>
+        <button class="navbtn mat-next" aria-label="次へ">→</button>
       </div>
     </div>
     <div class="swiper material-swiper reveal">
@@ -590,13 +590,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
   </div>
 </section>
 
-<style>
-#materials .material-card h3{color:#fff}
-#materials .material-card:hover h3{color:#fff;opacity:.8}
-#materials .material-card p{color:rgba(255,255,255,.75)}
-</style>
-
-<section class="section section-mark reveal" id="videos">
+<section class="section onestep-section zone-wipe reveal" id="videos">
   <div class="wrap">
     <div class="slider-head reveal">
       <div>
@@ -618,7 +612,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
   </div>
 </section>
 
-<section class="section cream section-mark reveal" id="team">
+<section class="section section-mark reveal" id="team">
   <div class="wrap">
     <div class="reveal">
       <p class="kicker lead-in reveal">Our Team</p>
@@ -644,7 +638,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
   </div>
 </section>
 
-<section class="section section-mark reveal" id="voice">
+<section class="section cream section-mark reveal" id="voice">
   <div class="wrap">
     <div class="slider-head reveal">
       <div>
@@ -683,7 +677,7 @@ h1,h2,h3,.serif{font-family:"Shippori Mincho",serif}
   </div>
 </section>
 
-<section class="section cream section-mark reveal" id="faq">
+<section class="section section-mark reveal" id="faq">
   <div class="wrap">
     <div class="reveal" style="text-align:center">
       <p class="kicker body-in reveal" style="margin-left:auto;margin-right:auto">FAQ</p>
